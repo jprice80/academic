@@ -3,7 +3,7 @@ Type: Package
 Title: Statistical Models with Assumption Checks
 Version: 0.1.0
 Author: Josh Price <jprice5@utk.edu>
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Josh Price <jprice5@utk.edu>
 Description: This package contains convenience functions for performing common statistical procedures with assumption checks.  Functions are also included to produce ASCII and MS Word reports of results.
 License: GPL-3
 Encoding: UTF-8
