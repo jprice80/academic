@@ -18,6 +18,9 @@
 \item{gear}{Number of forward gears}
 \item{carb}{Number of carburetors}
 }}
+\source{
+Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.
+}
 \usage{
 mtcars
 }

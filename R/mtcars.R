@@ -20,5 +20,5 @@
 #'@note Henderson and Velleman (1981) comment in a footnote to Table 1: ‘Hocking [original transcriber]'s noncrucial coding of the Mazda's rotary engine as a straight six-cylinder engine and the Porsche's flat engine as a V engine, as well as the inclusion of the diesel Mercedes 240D, have been retained to enable direct comparisons to be made with previous analyses.
 #'
 #'@source Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.
-#'}
+
 "mtcars"

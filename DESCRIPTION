@@ -9,3 +9,10 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+URL: https://github.com/jprice80/academic
+Depends: 
+    dplyr,
+    officer
+Imports: 
+    DescTools,
+    pander
