@@ -1,5 +1,6 @@
 ########################################Utility / Helper Functions#####################################
 
+#Round all numeric variables in a dataframe
 #' @export
 round_df <- function(object, digits=4) {
 
@@ -15,6 +16,7 @@ round_df <- function(object, digits=4) {
   return(object)
 }
 
+#Round all numeric variables in a list of dataframes
 #' @export
 round_list <- function(object, digits=4) {
 
@@ -34,3 +36,4 @@ round_list <- function(object, digits=4) {
 
   return(object)
 }
+

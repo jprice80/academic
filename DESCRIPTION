@@ -12,7 +12,12 @@ RoxygenNote: 6.1.1
 URL: https://github.com/jprice80/academic
 Depends: 
     dplyr,
-    officer
+    ggplot2,
+    officer,
+    flextable
 Imports: 
     DescTools,
-    pander
+    pander,
+    fBasics,
+    qqplotr,
+    grDevices

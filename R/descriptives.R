@@ -16,7 +16,7 @@
 #' descriptives(data=mtcars, vars=c("mpg","disp"), groupby=c("gear","am"))
 descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE){
 
-  #Check to insure variable is a dataframe
+  #Check to insure data is a dataframe
   if(!is.data.frame(data)){
     stop(paste("The object", data, "is not a dataframe"));
   }
@@ -40,15 +40,16 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
     if(!is.null(groupby)){
 
       dat<-data %>% group_by(.dots=groupby) %>%
-        summarise(n = n(),
+        summarise(ntotal = n(),
+                  nmiss = sum(is.na(!!sym(vars[i]))),
                   mean = mean(!!sym(vars[i]), na.rm = TRUE),
                   sd = sd(!!sym(vars[i]), na.rm = TRUE),
-                  stderr = sd/sqrt(n),
+                  stderr = sd/sqrt(ntotal),
                   median = median(!!sym(vars[i]), na.rm = TRUE),
                   min = min(!!sym(vars[i]), na.rm = TRUE),
                   max = max(!!sym(vars[i]), na.rm = TRUE))
-      #LCL = mean - qt(1 - (0.05 / 2), n - 1) * stderr,
-      #UCL = mean + qt(1 - (0.05 / 2), n - 1) * stderr,
+      #LCL = mean - qt(1 - (0.05 / 2), ntotal - 1) * stderr,
+      #UCL = mean + qt(1 - (0.05 / 2), ntotal - 1) * stderr,
       #LCLmed = MedianCI(!!sym(vars[i]), method="boot", na.rm=TRUE)[2],
       #UCLmed = MedianCI(!!sym(vars[i]), method="boot", na.rm=TRUE)[3])
 
@@ -85,7 +86,8 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
     } else {
 
       dat<-data %>%
-        summarise(n = n(),
+        summarise(ntoal = n(),
+                  nmiss = sum(is.na(!!sym(vars[i]))),
                   mean = mean(!!sym(vars[i]), na.rm = TRUE),
                   sd = sd(!!sym(vars[i]), na.rm = TRUE),
                   stderr = sd/sqrt(n),
