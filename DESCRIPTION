@@ -20,4 +20,5 @@ Imports:
     pander,
     fBasics,
     qqplotr,
-    grDevices
+    grDevices,
+    gridExtra

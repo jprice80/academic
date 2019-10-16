@@ -4,6 +4,7 @@
 #'
 #' @param object An R object from an aca analysis.
 #' @param path Path or connection to write to.
+#' @param round round the number of digits to round too when producing the report.
 #'
 #' @return will produce an *.docx file.
 #' @export

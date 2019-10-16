@@ -44,10 +44,13 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
                   nmiss = sum(is.na(!!sym(vars[i]))),
                   mean = mean(!!sym(vars[i]), na.rm = TRUE),
                   sd = sd(!!sym(vars[i]), na.rm = TRUE),
-                  stderr = sd/sqrt(ntotal),
+                  stderr = sd/sqrt(n()),
                   median = median(!!sym(vars[i]), na.rm = TRUE),
                   min = min(!!sym(vars[i]), na.rm = TRUE),
-                  max = max(!!sym(vars[i]), na.rm = TRUE))
+                  max = max(!!sym(vars[i]), na.rm = TRUE),
+                  pct25 = quantile(!!sym(vars[i]), probs=0.25, na.rm=TRUE),
+                  pct75 = quantile(!!sym(vars[i]), probs=0.75, na.rm=TRUE),
+                  IQR = pct75 - pct25)
       #LCL = mean - qt(1 - (0.05 / 2), ntotal - 1) * stderr,
       #UCL = mean + qt(1 - (0.05 / 2), ntotal - 1) * stderr,
       #LCLmed = MedianCI(!!sym(vars[i]), method="boot", na.rm=TRUE)[2],
@@ -62,6 +65,8 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
 
       lwrm<-clm %>% filter(names=="lwr.ci")
       uprm<-clm %>% filter(names=="upr.ci")
+
+      quantile
 
       if(medianCI==TRUE){
       #CL median calcs
@@ -90,10 +95,13 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
                   nmiss = sum(is.na(!!sym(vars[i]))),
                   mean = mean(!!sym(vars[i]), na.rm = TRUE),
                   sd = sd(!!sym(vars[i]), na.rm = TRUE),
-                  stderr = sd/sqrt(n),
+                  stderr = sd/sqrt(n()),
                   median = median(!!sym(vars[i]), na.rm = TRUE),
                   min = min(!!sym(vars[i]), na.rm = TRUE),
-                  max = max(!!sym(vars[i]), na.rm = TRUE))
+                  max = max(!!sym(vars[i]), na.rm = TRUE),
+                  pct25 = quantile(!!sym(vars[i]), probs=0.25, na.rm=TRUE),
+                  pct75 = quantile(!!sym(vars[i]), probs=0.75, na.rm=TRUE),
+                  IQR = pct75 - pct25)
       #LCL = mean - qt(1 - (0.05 / 2), n - 1) * stderr,
       #UCL = mean + qt(1 - (0.05 / 2), n - 1) * stderr,
       #LCLmed = MedianCI(!!sym(vars[i]), method="exact", na.rm=TRUE)[2],

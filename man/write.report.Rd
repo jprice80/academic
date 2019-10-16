@@ -4,12 +4,14 @@
 \alias{write.report}
 \title{Write Formatted Output to a *.docx File}
 \usage{
-write.report(object, path)
+write.report(object, path, round = NULL)
 }
 \arguments{
 \item{object}{An R object from an aca analysis.}
 
 \item{path}{Path or connection to write to.}
+
+\item{round}{round the number of digits to round too when producing the report.}
 }
 \value{
 will produce an *.docx file.
