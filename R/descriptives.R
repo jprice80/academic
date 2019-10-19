@@ -1,19 +1,19 @@
 #' Descriptive Statistics on variables within a data frame
 #'
-#' @description The  \code{descriptives} function is used to perform descriptive statistics on a set of variables in a \code{\link{data.frame}}.
+#' @description The \code{descriptives} function is used to perform descriptive statistics on a set of variables in a \code{\link{data.frame}}.
 #' This can include descriptive statistics by group when including a vector of categorical variables in the groupby= argument.
 #'
 #' @param data a \code{\link{data.frame}} containing columns of variables.
 #' @param vars a \code{\link{vector}} of variable names existing in the dataframe to perform descriptive statistics on.
 #' @param groupby an optional \code{\link{vector}} containing factor names within a dataframe used for by group processing.
-#' @param conf.level the confidence level for mean and median confidence intervals.
+#' @param conf.level the confidence level for mean and median confidence intervals. The default value is 0.95.
 #' @param medianCI a TRUE/FALSE boolean value indicating whether or not to produce bootstrapped confidence intervals on the median (computationally intensive).
 #'
 #' @return A \code{\link{list}} containing descriptive statistics for each variable listed in the \code{vars} statement.
 #' @export
 #'
 #' @examples
-#' descriptives(data=mtcars, vars=c("mpg","disp"), groupby=c("gear","am"))
+#' descriptives(data=mtcars, vars=c("mpg","disp"), groupby=c("vs","am"))
 descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE){
 
   #Check to insure data is a dataframe
@@ -150,19 +150,20 @@ descriptives<-function(data, vars, groupby=NULL, conf.level=0.95, medianCI=FALSE
 }
 
 
-
 #' @export
-summary.aca_desc<-function(x){
-  if(class(x) != "aca_desc"){
-    stop(paste(x, "not an aca_desc object"))
+summary.aca_desc<-function(object){
+  if(class(object) != "aca_desc"){
+    stop(paste(object, "not an aca_desc object"))
   }
 
-  for(i in 1:length(x)){
-    print(x[[i]], row.names=FALSE)
+  for(i in 1:length(object)){
+    print(object[[i]], row.names=FALSE)
     cat("\n")
   }
 }
 
 
-
-
+#' @export
+print.aca_desc<-function(object){
+  summary(object)
+}
